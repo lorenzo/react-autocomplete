@@ -49,7 +49,6 @@ var Autocomplete = React.createClass({
       menuStyle: {
         borderRadius: '3px',
         background: '#ffffff',
-        padding: '2px 0',
         fontSize: '90%',
         position: 'fixed',
         overflow: 'auto',
