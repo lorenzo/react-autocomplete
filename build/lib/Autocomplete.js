@@ -16,6 +16,7 @@ var Autocomplete = React.createClass({
 
   propTypes: {
     value: React.PropTypes.any,
+    introElement: React.PropTypes.any,
     onChange: React.PropTypes.func,
     onSelect: React.PropTypes.func,
     shouldItemRender: React.PropTypes.func,
@@ -47,8 +48,7 @@ var Autocomplete = React.createClass({
 
       menuStyle: {
         borderRadius: '3px',
-        boxShadow: '0 2px 12px rgba(0, 0, 0, 0.1)',
-        background: 'rgba(255, 255, 255, 0.9)',
+        background: '#ffffff',
         padding: '2px 0',
         fontSize: '90%',
         position: 'fixed',
@@ -277,10 +277,17 @@ var Autocomplete = React.createClass({
       });
     });
     var style = {
-      left: this.state.menuLeft,
+      left: 0,
+      textIndent: this.state.menuLeft,
+      width: '100%',
       top: this.state.menuTop,
       minWidth: this.state.menuWidth
     };
+
+    if (this.props.introElement && items.length > 0) {
+      items = [this.props.introElement].concat(items);
+    }
+
     var menu = this.props.renderMenu(items, this.props.value, style);
     return React.cloneElement(menu, { ref: 'menu' });
   },
